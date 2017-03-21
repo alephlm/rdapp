@@ -46,9 +46,13 @@ Now you can start a simple ruby server mimicing clients webserver:
 $ ruby -run -ehttpd . -p8000
 ```
 Client pages will be accessible at 
+
 http://localhost:8000/home.html, 
+
 http://localhost:8000/sobre.html, 
+
 http://localhost:8000/preco.html,
+
 http://localhost:8000/contato.html 
 
 ## Testing API
@@ -61,9 +65,9 @@ $ rails test /test/controllers/contatos_controller_test.rb
 # Getting contacts data:
 To get list of all contacts access the API at:
 ```shell
-http://localhost:3000/users
+http://localhost:3000/contatos
 ```
 To get an specific contact and the list of pages associated to him.
 ```shell
-http://localhost:3000/users/contact_id
+http://localhost:3000/contatos/contact_id
 ```

@@ -10,7 +10,7 @@ class ContatosController < ApplicationController
 
   # GET /contatos/1
   def show
-    render json: @contato
+    render json: @contato.to_json( :include => [:pages] )
   end
 
   # POST /contatos
@@ -21,13 +21,16 @@ class ContatosController < ApplicationController
       @contato = Contato.new(contato_params)
     end
     
-    @contato.pages.map(&:destroy)
+    @contato.pages.find_by(url: contato_params[:email])
 
     if @contato.save
       params[:pages].each do |page|
-        @page = Page.new(contato_id: @contato.id, url: page[:url])
-        @page.save
+        unless Page.find_by(contato_id: @contato.id, url: page[:url])
+          @page = Page.new(contato_id: @contato.id, url: page[:url])
+          @page.save
+        end
       end
+      render json: @contato, status: :created, location: @contato
     else
       render json: @contato.errors, status: :unprocessable_entity
     end

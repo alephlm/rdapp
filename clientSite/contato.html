@@ -1,0 +1,39 @@
+<html>
+<head> 
+<meta http-equiv="content-type" content="text/html; charset=utf-8"> 
+<title>Contato</title> 
+</head>
+<link rel="stylesheet" href="bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+<script src="/mylib.js"></script>
+<body> 
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/home.html">Home</a></li>
+                <li><a href="/sobre.html">Sobre</a></li>
+                <li><a href="/preco.html">Preço</a></li>
+                <li><a href="/contato.html">Contato</a></li>
+            </ul>
+            <a href="#" class="navbar-right" title="Clear Local Storage"
+             onclick="clearLocalStorage()" style="color: lightgray">cls</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h1>Contato</h1>
+
+    <form method="POST" action='http://localhost:3000/contatos/' onsubmit="sendInfo(this, event)">
+
+    <div class="form-group">
+    <label for="email">Endereço de email</label>
+    <input class="form-control" type="email" id="email" placeholder="Email" required/>
+    <small id="emailHelp" class="form-text text-muted">Seu email nunca será divulgado para terceiros.</small>
+    </div>
+    <button class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+
+</body>
+</html>

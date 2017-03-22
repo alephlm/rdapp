@@ -2,6 +2,7 @@
 *.rbc
 capybara-*.html
 .rspec
+.rake_tasks*
 /log
 /tmp
 /db/*.sqlite3

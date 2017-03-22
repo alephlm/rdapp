@@ -15,24 +15,25 @@ class ContatosController < ApplicationController
 
   # POST /contatos
   def create
-
-    @contato = Contato.find_by(email: contato_params[:email])
-    if !@contato
-      @contato = Contato.new(contato_params)
-    end
-    
-    @contato.pages.find_by(url: contato_params[:email])
-
-    if @contato.save
-      params[:pages].each do |page|
-        unless Page.find_by(contato_id: @contato.id, url: page[:url])
-          @page = Page.new(contato_id: @contato.id, url: page[:url])
-          @page.save
-        end
-      end
-      render json: @contato, status: :created, location: @contato
+    if !params[:pages]
+      render json: 'Pages required', status: :unprocessable_entity
     else
-      render json: @contato.errors, status: :unprocessable_entity
+      @contato = Contato.find_by(email: contato_params[:email])
+      if !@contato
+        @contato = Contato.new(contato_params)
+      end
+      
+      if @contato.save
+        params[:pages].each do |page|
+          unless Page.find_by(contato_id: @contato.id, url: page[:url])
+            @page = Page.new(contato_id: @contato.id, url: page[:url])
+            @page.save
+          end
+        end
+        render json: @contato, status: :created, location: @contato
+      else
+        render json: @contato.errors, status: :unprocessable_entity
+      end
     end
   end
 

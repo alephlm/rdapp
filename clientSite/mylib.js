@@ -7,7 +7,11 @@ function supports_html5_storage() {
 }
 
 var path = window.location.pathname.split('/');
-var page = path[path.length-1] == "" ? 'home.html' : path[path.length-1]
+var page = path[path.length-1] == "" ? 'home' : path[path.length-1]
+
+if(page.indexOf('.') != -1){
+	page = page.substring(0, page.indexOf('.'))
+}
 
 if(!localStorage["url"]){
 	localStorage["url"] = "";

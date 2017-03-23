@@ -67,7 +67,7 @@ http://localhost:8000/contato.html
 
 ## Testing API
 
-For test the API run:
+For test the API in the *rdappAPI* folder run:
 ```shell
 $ rails test
 ```
@@ -82,3 +82,12 @@ To get an specific contact and the list of pages associated to him, access API a
 ```shell
 http://localhost:3000/contatos/{contato_id}
 ```
+
+# Heroku deployed apps:
+API:
+
+https://morning-sands-43096.herokuapp.com/contatos #lists all contacts
+
+https://morning-sands-43096.herokuapp.com/contatos/{contato_id} #lists specific contact and his pages
+
+Client: https://floating-lake-70378.herokuapp.com/
